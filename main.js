@@ -7,9 +7,9 @@ async function start(){
     p.textContent = tag;
 
     let imgElement = document.createElement('img');
-    imgElement.src = 'https://cdn.pixabay.com/photo/2013/10/15/09/12/flower-195893_150.jpg'
+    imgElement.src = 'https://media.istockphoto.com/id/183764567/sv/foto/colorful-daisies-focus-on-madeira-deep-rose-marguerite-daisy.jpg?s=1024x1024&w=is&k=20&c=8G6G4BCsepq-DbWsFRVHmY-rrhocYstqkh6yQV5EDpU='
     
-    imgElement.append;
+    document.main.append(imgElement);
 }
 
 start();
