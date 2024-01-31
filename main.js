@@ -7,9 +7,9 @@ async function start(){
     p.textContent = tag;
 
     let imgElement = document.createElement('img');
-    imgElement.src = ''
+    imgElement.src = 'https://cdn.pixabay.com/photo/2013/10/15/09/12/flower-195893_150.jpg'
     
-
+    imgElement.append;
 }
 
 start();
