@@ -6,10 +6,12 @@ async function start(){
     let p = document.querySelector('p');
     p.textContent = tag;
 
+    let firstimg= json.hits[0];
+
     let imgElement = document.createElement('img');
-    imgElement.src = 'https://media.istockphoto.com/id/183764567/sv/foto/colorful-daisies-focus-on-madeira-deep-rose-marguerite-daisy.jpg?s=1024x1024&w=is&k=20&c=8G6G4BCsepq-DbWsFRVHmY-rrhocYstqkh6yQV5EDpU='
+    imgElement.src = firstimg.previewURL;
     
-    document.main.append(imgElement);
+    document.body.append(imgElement);
 }
 
 start();
