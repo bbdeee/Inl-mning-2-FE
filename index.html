@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, intial-scale=1.0">
 	<title>Search</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="main.js"></script>
+	<script src="main.js" defer></script>
 </head>
 <body>
 	<header>
@@ -12,9 +12,9 @@
 
     <form id ="shit">
 		<label for="search"></label>
-		<input type="text" name="search" placeholder="im right">
+		<input class ="search-bar" type="text" id="search" placeholder="im right">
 		<label for="color"></label>
-		<select name="color" id="">
+		<select id="color" id="">
 			<option value="red">Red</option>
 			<option value="orange">Orange</option>
 			<option value="yellow">Yellow</option>
@@ -28,8 +28,7 @@
 			<option value="black">Black</option>
 			<option value="brown">Brown</option>
 		</select>
-		<button type="submit">Submit</button>
-
+		<button class="search-button" type="submit">Submit</button>
 	</form>
 </header>
 <main><p></p>

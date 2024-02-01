@@ -1,3 +1,5 @@
+let searchButton = document.querySelector('.search-button');
+
 async function start(){
     let response = await fetch ('https://pixabay.com/api?key=42129869-dc478a785dd85fbec059c7ef2&q=yellow+flower&image_type=photo');
     let json= await response.json();
@@ -12,6 +14,10 @@ async function start(){
     imgElement.src = firstimg.previewURL;
     
     document.body.append(imgElement);
+
 }
 
-start();
+
+searchButton.onclick = function () {
+    start();
+};
