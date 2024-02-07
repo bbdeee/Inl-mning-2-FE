@@ -29,9 +29,11 @@ body{
 }
 .users{
     text-align: left;
+    align-self: end;
 }
 .tags{
-    
+    text-align: right;
+    align-self: end;
 }
 
 
