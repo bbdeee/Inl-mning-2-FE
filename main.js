@@ -8,6 +8,8 @@ const brianKey = '42149569-386fe2868d6733db199f6e4c1';
 //Create the invisble buttons
 let previousButton = document.createElement('button');
 let nextButton = document.createElement('button');
+previousButton.setAttribute('class', 'bottom-buttons');
+nextButton.setAttribute('class', 'bottom-buttons');
 // Picture load "counter"
 let start = 0; 
 let stop = 9; 
@@ -53,13 +55,17 @@ async function load(json){
         contentContainer.appendChild(imgElement);
         main.appendChild(contentContainer);
     }
-
+    //Create div for buttons
+    let buttonDiv = document.createElement('div');
+    buttonDiv.setAttribute('id', 'buttons');
+    //Append div
+    footer.appendChild(buttonDiv);
     //Text for buttons
     previousButton.textContent = 'Previous page';
     nextButton.textContent = 'Next page';
     //Show buttons
-    footer.appendChild(previousButton);
-    footer.appendChild(nextButton); 
+    buttonDiv.appendChild(previousButton);
+    buttonDiv.appendChild(nextButton); 
 }
 
 async function remove(){

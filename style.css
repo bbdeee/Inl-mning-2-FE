@@ -1,0 +1,18 @@
+body{
+    background-image: url(bg.jpg);
+    background-size: cover;
+}
+
+
+#form{
+    text-align:center;
+}
+#buttons{
+    text-align:center;
+}
+
+.bottom-buttons{
+    /* 
+    design for both buttons
+    */
+}
