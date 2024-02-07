@@ -1,12 +1,40 @@
 body{
     background-image: url(bg.jpg);
     background-size: cover;
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
 }
-
 
 #form{
     text-align:center;
 }
+#content-container{
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+#picture-container{
+    display: grid;
+    grid-template-columns: 1fr 1 fr;
+    justify-content: center;
+}
+#picture-container p{
+    color: white;
+}
+.text-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+}
+.users{
+    text-align: left;
+}
+.tags{
+    
+}
+
+
 #buttons{
     text-align:center;
 }

@@ -10,6 +10,12 @@ let previousButton = document.createElement('button');
 let nextButton = document.createElement('button');
 previousButton.setAttribute('class', 'bottom-buttons');
 nextButton.setAttribute('class', 'bottom-buttons');
+//Create content-container div
+let contentContainer = document.createElement('div');
+contentContainer.setAttribute('id', 'content-container');
+//Create div for buttons
+let buttonDiv = document.createElement('div');
+buttonDiv.setAttribute('id', 'buttons');
 // Picture load "counter"
 let start = 0; 
 let stop = 9; 
@@ -24,40 +30,48 @@ async function search(){
     let response = await fetch ('https://pixabay.com/api?key='+brianKey+'&q='+ searchColor +'+' + searchPhrase +'&image_type=photo');
     let json= await response.json();
 
+    //Load content-container div
+    main.appendChild(contentContainer);
     return json;
 }
 
 async function load(json){
-
+    
     for(let i = start; i <= stop; i++){
         
         //Find data from array
-        let img = json.hits[i].previewURL;
+        let img = json.hits[i].webformatURL;
         let tag = json.hits[i].tags;
         let user = json.hits[i].user;
         //Create (invisible) elements
         let imgElement = document.createElement('img');
         let tagParagraph = document.createElement('p');
         let userParagraph = document.createElement('p');
-        let contentContainer = document.createElement('div');
+        let pictureContainer = document.createElement('div');
+
+        //Create divs for <p>s
+        let picInfo = document.createElement('div');
+        picInfo.setAttribute('class', 'text-info');
+        
+        //Attribute for <p>
+        tagParagraph.setAttribute('class', 'tags');
+        userParagraph.setAttribute('class', 'users')
 
         //Set attribue for div container
-        contentContainer.setAttribute('id', 'content-container');
+        pictureContainer.setAttribute('id', 'picture-container');
 
         //Set data for the invisible elements recently created
         imgElement.src = img;
-        tagParagraph.textContent = tag;
-        userParagraph.textContent = user;
+        tagParagraph.textContent = "Tags: " + tag;
+        userParagraph.textContent = "User: " + user;
 
         //Show elements
-        contentContainer.appendChild(tagParagraph);
-        contentContainer.appendChild(userParagraph);
-        contentContainer.appendChild(imgElement);
-        main.appendChild(contentContainer);
+        pictureContainer.appendChild(picInfo);
+        picInfo.appendChild(userParagraph);
+        picInfo.appendChild(tagParagraph);  
+        pictureContainer.appendChild(imgElement);
+        contentContainer.appendChild(pictureContainer);
     }
-    //Create div for buttons
-    let buttonDiv = document.createElement('div');
-    buttonDiv.setAttribute('id', 'buttons');
     //Append div
     footer.appendChild(buttonDiv);
     //Text for buttons
@@ -70,7 +84,7 @@ async function load(json){
 
 async function remove(){
     for(let i = 0; i < 10; i++){
-        let contentContainer = document.querySelector('#content-container'); 
+        let contentContainer = document.querySelector('#picture-container'); 
 
         if(contentContainer){
             contentContainer.remove();
