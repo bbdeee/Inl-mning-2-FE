@@ -3,10 +3,13 @@ body{
     background-size: cover;
     background-repeat: no-repeat; 
     background-attachment: fixed;
+
 }
 
 #form{
     text-align:center;
+}
+#search-form{
 }
 #content-container{
     text-align: center;
@@ -36,13 +39,49 @@ body{
     align-self: end;
 }
 
-
 #buttons{
     text-align:center;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+.design-buttons{
+ /*<a> */
+ position: relative;
+ background: #fff;
+ color: #fff;
+ text-decoration:none;
+ text-transform: uppercase;
+ font-size: 1.5em;
+ letter-spacing: 0.1em;
+ font-weight: 400;
+ padding: 10px 30px;
+ transition: 0.5s;
+ margin-left: 10px;
+ margin-right: 10px;
+}
+.design-buttons:hover{
+    background: #1e9bff;
+    color: #1e9bff;
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px #1e9bff;
+}
+.design-buttons:before{
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #27282c;
+}
+.design-buttons-span{
+    position: relative;
+    z-index: 1;
+}
+.design-buttons.disabled{
+    pointer-events: none;
+    opacity: 0.5;
 }
 
-.bottom-buttons{
-    /* 
-    design for both buttons
-    */
+@media(max-width: 1000px){
+    #content-container{
+        grid-template-columns:  1fr;
+    }
 }
