@@ -7,12 +7,6 @@ const searchForm = document.querySelector('#search-form');
 const johnKey = '42129869-dc478a785dd85fbec059c7ef2';
 const brianKey = '42149569-386fe2868d6733db199f6e4c1';
 
-//Create the invisble buttons
-let previousButton = document.createElement('button');
-let nextButton = document.createElement('button');
-previousButton.setAttribute('class', 'bottom-buttons');
-nextButton.setAttribute('class', 'bottom-buttons');
-
 //Create content-container div
 let contentContainer = document.createElement('div');
 contentContainer.setAttribute('id', 'content-container');
@@ -94,14 +88,7 @@ async function load(json){
         pictureContainer.appendChild(imgElement);
         contentContainer.appendChild(pictureContainer);
     }
-    //Append div
     footer.appendChild(buttonDiv);
-    //Text for buttons 
-    //previousButton.textContent = 'Previous page';
-    //nextButton.textContent = 'Next page';
-    //Show buttons
-    //buttonDiv.appendChild(previousButton);
-    //buttonDiv.appendChild(nextButton); 
 
     //New design "buttons"
     buttonDiv.appendChild(previousNotButton);
