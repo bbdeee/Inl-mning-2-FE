@@ -3,13 +3,9 @@ body{
     background-size: cover;
     background-repeat: no-repeat; 
     background-attachment: fixed;
-
 }
-
 #form{
     text-align:center;
-}
-#search-form{
 }
 #content-container{
     text-align: center;
@@ -45,7 +41,6 @@ body{
     margin-bottom: 25px;
 }
 .design-buttons{
- /*<a> */
  position: relative;
  background: #fff;
  color: #fff;

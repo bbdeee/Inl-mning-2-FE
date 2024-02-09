@@ -2,33 +2,41 @@
 const main = document.querySelector('#main');
 const footer = document.querySelector('#footer');
 const searchForm = document.querySelector('#search-form');
+
 //Keys
 const johnKey = '42129869-dc478a785dd85fbec059c7ef2';
 const brianKey = '42149569-386fe2868d6733db199f6e4c1';
+
 //Create the invisble buttons
 let previousButton = document.createElement('button');
 let nextButton = document.createElement('button');
 previousButton.setAttribute('class', 'bottom-buttons');
 nextButton.setAttribute('class', 'bottom-buttons');
+
 //Create content-container div
 let contentContainer = document.createElement('div');
 contentContainer.setAttribute('id', 'content-container');
+
 //Create div for buttons
 let buttonDiv = document.createElement('div');
 buttonDiv.setAttribute('id', 'buttons');
+
 //Designed buttons (not rly button)
 let nextNotButton = document.createElement('a');
 let nextNotButtonSpan = document.createElement('span');
 let previousNotButton = document.createElement('a');
 let previousNotButtonSpan = document.createElement('span');
+
 //Attributes for notbuttons
 nextNotButton.setAttribute('class', 'design-buttons');
 previousNotButton.setAttribute('class', 'design-buttons');
 nextNotButtonSpan.setAttribute('class', 'design-buttons-span');
 previousNotButtonSpan.setAttribute('class', 'design-buttons-span');
+
 // Picture load "counter"
 let start = 0; 
 let stop = 9; 
+
 //create json to be able assign it in search() and use it in load()
 let json = null;
 
