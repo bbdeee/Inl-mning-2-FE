@@ -28,33 +28,33 @@ nextNotButtonSpan.setAttribute('class', 'design-buttons-span');
 previousNotButtonSpan.setAttribute('class', 'design-buttons-span');
 
 // Picture load "counter"
-let start = 0; 
-let stop = 9; 
+let start = 0;
+let stop = 9;
 
 //create json to be able assign it in search() and use it in load()
 let json = null;
 
-async function search(){
-        //Reaching elements with variables
+async function search() {
+    //Reaching elements with variables
     let searchPhrase = document.querySelector('#search-bar').value;
     let searchColor = document.querySelector('#color-selector').value;
 
-    if(searchColor == 'any color'){
+    if (searchColor == 'any color') {
         searchColor = 'red|black|orange|yellow|white|brown|blue|pink|purple|green|grey|turquoise';
     }
     //Api things
-    let response = await fetch ('https://pixabay.com/api?key='+brianKey+'&q='+ searchColor +'+' + searchPhrase +'&image_type=photo&per_page=50');
-    let json= await response.json();
+    let response = await fetch('https://pixabay.com/api?key=' + brianKey + '&q=' + searchColor + '+' + searchPhrase + '&image_type=photo&per_page=50');
+    let json = await response.json();
 
     //Load content-container div
     main.appendChild(contentContainer);
     return json;
 }
 
-async function load(json){
-    
-    for(let i = start; i <= stop; i++){
-        
+async function load(json) {
+
+    for (let i = start; i <= stop; i++) {
+
         //Find data from array
         let img = json.hits[i].webformatURL;
         let tag = json.hits[i].tags;
@@ -68,7 +68,7 @@ async function load(json){
         //Create divs for <p>s
         let picInfo = document.createElement('div');
         picInfo.setAttribute('class', 'text-info');
-        
+
         //Attribute for <p>
         tagParagraph.setAttribute('class', 'tags');
         userParagraph.setAttribute('class', 'users')
@@ -84,7 +84,7 @@ async function load(json){
         //Show elements
         pictureContainer.appendChild(picInfo);
         picInfo.appendChild(userParagraph);
-        picInfo.appendChild(tagParagraph);  
+        picInfo.appendChild(tagParagraph);
         pictureContainer.appendChild(imgElement);
         contentContainer.appendChild(pictureContainer);
     }
@@ -100,14 +100,14 @@ async function load(json){
     previousNotButtonSpan.textContent = 'Prev';
 }
 
-async function remove(){
-    for(let i = 0; i < 10; i++){
-        let contentContainer = document.querySelector('#picture-container'); 
+async function remove() {
+    for (let i = 0; i < 10; i++) {
+        let contentContainer = document.querySelector('#picture-container');
 
-        if(contentContainer){
+        if (contentContainer) {
             contentContainer.remove();
         }
-    }  
+    }
 }
 
 searchForm.addEventListener('submit', async function (event) {
@@ -118,44 +118,44 @@ searchForm.addEventListener('submit', async function (event) {
     json = await search(); //Get Json
     load(json); // Load data
     checkButtons();
-    
+
     let numberPics = json.hits.length;
-console.log(numberPics);
+    console.log(numberPics);
 
 });
 //Functions for buttons
-nextNotButton.onclick = function(){
-    if(stop < json.hits.length -1){
+nextNotButton.onclick = function () {
+    if (stop < json.hits.length - 1) {
         console.log("Next");
-        start = start + 10; 
-        stop = stop + 10; 
+        start = start + 10;
+        stop = stop + 10;
         remove();
         load(json);
         checkButtons();
     }
 };
-previousNotButton.onclick = function(){
+previousNotButton.onclick = function () {
     console.log("Previous");
-    if(start > 0){
-        start = start - 10; 
-        stop = stop - 10; 
+    if (start > 0) {
+        start = start - 10;
+        stop = stop - 10;
         remove();
         load(json);
         checkButtons();
     }
 };
 
-async function checkButtons(){
-    if(start > 0){
+async function checkButtons() {
+    if (start > 0) {
         previousNotButton.classList.remove('disabled');
-        
-    }else{
+
+    } else {
         previousNotButton.classList.add('disabled');
     }
-    
-    if(stop < json.hits.length -1){
+
+    if (stop < json.hits.length - 1) {
         nextNotButton.classList.remove('disabled');
-    }else{
+    } else {
         nextNotButton.classList.add('disabled');
     }
 }

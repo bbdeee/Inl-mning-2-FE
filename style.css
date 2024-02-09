@@ -1,83 +1,95 @@
-body{
+body {
     background-image: url(bg.jpg);
     background-size: cover;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-attachment: fixed;
 }
-#form{
-    text-align:center;
+
+#form {
+    text-align: center;
 }
-#content-container{
+
+#content-container {
     text-align: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
-#picture-container{
+
+#picture-container {
     display: grid;
     grid-template-columns: 1fr 1 fr;
     justify-content: center;
 }
-#picture-container p{
+
+#picture-container p {
     color: white;
 }
-.text-info{
+
+.text-info {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
 }
-.users{
+
+.users {
     text-align: left;
     align-self: end;
 }
-.tags{
+
+.tags {
     text-align: right;
     align-self: end;
 }
 
-#buttons{
-    text-align:center;
+#buttons {
+    text-align: center;
     margin-top: 15px;
     margin-bottom: 25px;
 }
-.design-buttons{
- position: relative;
- background: #fff;
- color: #fff;
- text-decoration:none;
- text-transform: uppercase;
- font-size: 1.5em;
- letter-spacing: 0.1em;
- font-weight: 400;
- padding: 10px 30px;
- transition: 0.5s;
- margin-left: 10px;
- margin-right: 10px;
- cursor: pointer;
+
+.design-buttons {
+    position: relative;
+    background: #fff;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 10px 30px;
+    transition: 0.5s;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
 }
-.design-buttons:hover{
+
+.design-buttons:hover {
     background: #1e9bff;
     color: #1e9bff;
     letter-spacing: 0.25em;
     box-shadow: 0 0 35px #1e9bff;
 }
-.design-buttons:before{
+
+.design-buttons:before {
     content: '';
     position: absolute;
     inset: 2px;
     background: #27282c;
 }
-.design-buttons-span{
+
+.design-buttons-span {
     position: relative;
     z-index: 1;
 }
-.design-buttons.disabled{
+
+.design-buttons.disabled {
     pointer-events: none;
     opacity: 0.5;
 }
 
-@media(max-width: 1000px){
-    #content-container{
-        grid-template-columns:  1fr;
+@media(max-width: 1000px) {
+    #content-container {
+        grid-template-columns: 1fr;
     }
 }
