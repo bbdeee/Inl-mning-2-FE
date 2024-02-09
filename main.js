@@ -43,7 +43,7 @@ async function search() {
         searchColor = 'red|black|orange|yellow|white|brown|blue|pink|purple|green|grey|turquoise';
     }
     //Api things
-    let response = await fetch('https://pixabay.com/api?key=' + brianKey + '&q=' + searchColor + '+' + searchPhrase + '&image_type=photo&per_page=50');
+    let response = await fetch('https://pixabay.com/api/?key=' + brianKey + '&q=' + searchColor + '+' + searchPhrase + '&image_type=photo&per_page=50');
     let json = await response.json();
 
     //Load content-container div
