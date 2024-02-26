@@ -43,8 +43,10 @@ async function search() {
         searchColor = 'red|black|orange|yellow|white|brown|blue|pink|purple|green|grey|turquoise';
     }
     //Api things
-    let response = await fetch('https://pixabay.com/api/?key=' + brianKey + '&q=' + searchColor + '+' + searchPhrase + '&image_type=photo&per_page=50');
+    let response = await fetch('https://pixabay.com/api/?key=' + brianKey + '&q=' + searchPhrase + '&colors=' + searchColor + '&image_type=photo&per_page=200');
     let json = await response.json();
+
+    //https://pixabay.com/api/?key=42149569-386fe2868d6733db199f6e4c1&q=red+cat&image_type=photo&per_page=200
 
     //Load content-container div
     main.appendChild(contentContainer);
@@ -56,7 +58,7 @@ async function load(json) {
     for (let i = start; i <= stop; i++) {
 
         //Find data from array
-        let img = json.hits[i].webformatURL;
+        let img = json.hits[i].previewURL;
         let tag = json.hits[i].tags;
         let user = json.hits[i].user;
         //Create (invisible) elements
@@ -82,10 +84,10 @@ async function load(json) {
         userParagraph.textContent = "User: " + user;
 
         //Show elements
-        pictureContainer.appendChild(picInfo);
-        picInfo.appendChild(userParagraph);
-        picInfo.appendChild(tagParagraph);
         pictureContainer.appendChild(imgElement);
+        pictureContainer.appendChild(picInfo);
+        picInfo.appendChild(tagParagraph);
+        picInfo.appendChild(userParagraph);
         contentContainer.appendChild(pictureContainer);
     }
     footer.appendChild(buttonDiv);
