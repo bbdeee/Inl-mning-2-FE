@@ -30,9 +30,10 @@ previousNotButtonSpan.setAttribute('class', 'design-buttons-span');
 // Picture load "counter"
 let start = 0;
 let stop = 9;
+let allHits = [];
+let perPage = 200;
+let page = 1;
 
-//create json to be able assign it in search() and use it in load()
-let json = null;
 
 async function search() {
     //Reaching elements with variables
@@ -43,24 +44,30 @@ async function search() {
         searchColor = 'red|black|orange|yellow|white|brown|blue|pink|purple|green|grey|turquoise';
     }
     //Api things
-    let response = await fetch('https://pixabay.com/api/?key=' + brianKey + '&q=' + searchPhrase + '&colors=' + searchColor + '&image_type=photo&per_page=200');
-    let json = await response.json();
+    for (let i = 0; i < 3; i++) {
 
+        let response = await fetch(`https://pixabay.com/api/?key=${brianKey}&page=${page}&q=${searchPhrase}&colors=${searchColor}&image_type=photo&per_page=${perPage}`);
+        let json = await response.json();
+        allHits = allHits.concat(json.hits);
+        page++;
+    }
+
+
+    console.log(allHits.length);
     //https://pixabay.com/api/?key=42149569-386fe2868d6733db199f6e4c1&q=red+cat&image_type=photo&per_page=200
 
     //Load content-container div
     main.appendChild(contentContainer);
-    return json;
 }
 
-async function load(json) {
+async function load() {
 
     for (let i = start; i <= stop; i++) {
 
         //Find data from array
-        let img = json.hits[i].previewURL;
-        let tag = json.hits[i].tags;
-        let user = json.hits[i].user;
+        let img = allHits[i].previewURL;
+        let tag = allHits[i].tags;
+        let user = allHits[i].user;
         //Create (invisible) elements
         let imgElement = document.createElement('img');
         let tagParagraph = document.createElement('p');
@@ -117,32 +124,27 @@ searchForm.addEventListener('submit', async function (event) {
     start = 0;
     stop = 9;
     remove();
-    json = await search(); //Get Json
-    load(json); // Load data
+    await search(); //Get Json
+    load(); // Load data
     checkButtons();
-
-    let numberPics = json.hits.length;
-    console.log(numberPics);
 
 });
 //Functions for buttons
 nextNotButton.onclick = function () {
-    if (stop < json.hits.length - 1) {
-        console.log("Next");
+    if (stop < allHits.length - 1) {
         start = start + 10;
         stop = stop + 10;
         remove();
-        load(json);
+        load();
         checkButtons();
     }
 };
 previousNotButton.onclick = function () {
-    console.log("Previous");
     if (start > 0) {
         start = start - 10;
         stop = stop - 10;
         remove();
-        load(json);
+        load();
         checkButtons();
     }
 };
@@ -155,7 +157,7 @@ async function checkButtons() {
         previousNotButton.classList.add('disabled');
     }
 
-    if (stop < json.hits.length - 1) {
+    if (stop < allHits.length - 1) {
         nextNotButton.classList.remove('disabled');
     } else {
         nextNotButton.classList.add('disabled');
